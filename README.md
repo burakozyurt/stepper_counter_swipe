@@ -17,7 +17,7 @@
 ## Usage example
 
 ```dart
-import 'package:stepper_touch/stepper_touch.dart';
+import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 ...
 Container(
   padding: const EdgeInsets.all(8.0),
