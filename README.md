@@ -4,7 +4,7 @@
 </a>
 
  This concept of the widget is inspired by [Nikolay Kuchkarov](https://dribbble.com/shots/5639404-Stepper-XVIII).
- Designers asked her what if a user swipes left and will hold such type of button. Could this stepper count faster? I released this version with more functionality in this subject.
+ Designers asked his what if a user swipes left and will hold such type of button. Could this stepper count faster? I released this version with more functionality in this subject.
 
 # gif
 <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/blue.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/green.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/red.gif?raw=true" width="300"/>
