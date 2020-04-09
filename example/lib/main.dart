@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:steppercounterswipe/stepper_counter_swipe.dart';
+import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
