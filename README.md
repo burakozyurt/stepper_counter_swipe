@@ -20,7 +20,7 @@ import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 ...
 Container(
   padding: const EdgeInsets.all(8.0),
-  child: StepperTouch(
+  child: StepperSwipe(
     initialValue:0,
     speedTransitionLimitCount: 3, //Trigger count for fast counting
     onChanged: (int value) => print('new value $value'),
