@@ -3,9 +3,8 @@
    <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
 </a>
 
- the concept of the widget inspired
- from [Nikolay Kuchkarov](https://dribbble.com/shots/5639404-Stepper-XVIII).
- i extended  the functionality to be more useful in real world applications
+ This concept of the widget is inspired by [Nikolay Kuchkarov](https://dribbble.com/shots/5639404-Stepper-XVIII).
+ Designers asked her what if a user swipes left and will hold such type of button. Could this stepper count faster? I released this version with more functionality in this subject.
 
 # gif
 <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/blue.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/green.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/red.gif?raw=true" width="300"/>

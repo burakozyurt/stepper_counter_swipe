@@ -1,7 +1,7 @@
 name: stepper_counter_swipe
 description: A flutter stepper widget for make the user experience much better. There is a hit zone for fast count
-version: 0.0.1
-author: Ahmet Burak Ozyurt <ozyurtburak11@gmail.com>
+version: 0.0.2
+author: Burak Ozyurt <ozyurtburak11@gmail.com>
 homepage: https://github.com/burakozyurt/stepper_counter_swipe
 
 environment:
