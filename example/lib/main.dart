@@ -15,13 +15,27 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Colors.green,
         body: SafeArea(
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: StepperSwipe(
+                    initialValue:0,
+                    speedTransitionLimitCount: 3,
+                    firstIncrementDuration: Duration(milliseconds: 250),
+                    secondIncrementDuration: Duration(milliseconds: 1),
+                    direction: Axis.horizontal,
+                    dragButtonColor: Colors.blueAccent,
+                    withSpring: true,
+                    withNaturalNumbers: true,
+                    onChanged: (int value) => print('new value $value'),
+                  ),
+                ),
+                /*Container(
                   width: 100,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -133,7 +147,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ],
                   ),
-                ),
+                ),*/
 
               ],
             ),
