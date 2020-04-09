@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 void main() => runApp(MyApp());
 
@@ -11,146 +10,20 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.green,
-        body: SafeArea(
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: StepperSwipe(
-                    initialValue:0,
-                    speedTransitionLimitCount: 3,
-                    firstIncrementDuration: Duration(milliseconds: 250),
-                    secondIncrementDuration: Duration(milliseconds: 1),
-                    direction: Axis.horizontal,
-                    dragButtonColor: Colors.blueAccent,
-                    withSpring: true,
-                    withNaturalNumbers: true,
-                    onChanged: (int value) => print('new value $value'),
-                  ),
-                ),
-                /*Container(
-                  width: 100,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: StepperSwipe(
-                          initialValue:0,
-                          speedTransitionLimitCount: 3,
-                          firstIncrementDuration: Duration(milliseconds: 500),
-                          withPlusMinus: true,
-                          dragButtonColor: Colors.blue,
-                          direction: Axis.vertical,
-                          withSpring: false,
-                          withNaturalNumbers: false,
-                          onChanged: (int value) => print('new value $value'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: StepperSwipe(
-                          initialValue:0,
-                          speedTransitionLimitCount: 3,
-                          firstIncrementDuration: Duration(milliseconds: 500),
-                          withPlusMinus: false,
-                          dragButtonColor: Colors.blue,
-                          direction: Axis.vertical,
-                          withSpring: false,
-                          withNaturalNumbers: false,
-                          onChanged: (int value) => print('new value $value'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 200,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: StepperSwipe(
-                            dragButtonColor: Colors.blue,
-                            initialValue: 0,
-                            onChanged: (int value) => print('new value $value'),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: StepperSwipe(
-                            dragButtonColor: Colors.blue,
-                            withBackground: false,
-                            withNaturalNumbers: true,
-                            initialValue: 0,
-                            onChanged: (int value) => print('new value $value'),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: StepperSwipe(
-                            dragButtonColor: Colors.blue,
-                            withPlusMinus: true,
-                            initialValue: 0,
-                            onChanged: (int value) => print('new value $value'),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  width: 100,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: StepperSwipe(
-                          initialValue:0,
-                          speedTransitionLimitCount: 3,
-                          firstIncrementDuration: Duration(milliseconds: 500),
-                          withPlusMinus: true,
-                          dragButtonColor: Colors.blue,
-                          direction: Axis.vertical,
-                          withSpring: false,
-                          withNaturalNumbers: false,
-                          onChanged: (int value) => print('new value $value'),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: StepperSwipe(
-                          initialValue:0,
-                          speedTransitionLimitCount: 3,
-                          firstIncrementDuration: Duration(milliseconds: 500),
-                          withPlusMinus: false,
-                          dragButtonColor: Colors.blue,
-                          direction: Axis.vertical,
-                          withSpring: false,
-                          withNaturalNumbers: false,
-                          onChanged: (int value) => print('new value $value'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),*/
-
-              ],
-            ),
+        body: Center(
+          child: StepperSwipe(
+            initialValue:0,
+            speedTransitionLimitCount: 3,
+            firstIncrementDuration: Duration(milliseconds: 250),
+            secondIncrementDuration: Duration(milliseconds: 100),
+            direction: Axis.horizontal,
+            dragButtonColor: Colors.blueAccent,
+            withSpring: true,
+            withNaturalNumbers: true,
+            onChanged: (int val) => print('New value : $val'),
           ),
         ),
       ),
