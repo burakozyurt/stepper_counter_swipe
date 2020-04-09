@@ -8,9 +8,7 @@
  i extended  the functionality to be more useful in real world applications
 
 # gif
-![alt-text-1]<img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/blue.gif?raw=true" width="300"/>
-![alt-text-2]<img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/green.gif?raw=true" width="300"/>
-![alt-text-3]<img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/red.gif?raw=true" width="300"/>
+<img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/blue.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/green.gif?raw=true" width="300"/> <img src="https://github.com/burakozyurt/stepper_counter_swipe/blob/master/documents/red.gif?raw=true" width="300"/>
 
 ### Created
 
