@@ -3,11 +3,15 @@ import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
+ 
   @override
   _MyAppState createState() => _MyAppState();
+
+  
 }
 
 class _MyAppState extends State<MyApp> {
+   int val=5;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,6 +27,7 @@ class _MyAppState extends State<MyApp> {
             dragButtonColor: Colors.blueAccent,
             withSpring: true,
             maxValue:5,
+            stepperValue:val,
             withNaturalNumbers: true,
             onChanged: (int val) => print('New value : $val'),
           ),

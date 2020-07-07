@@ -7,7 +7,7 @@ import 'package:flutter/physics.dart';
 /// from [Nikolay Kuchkarov](https://dribbble.com/shots/5639404-Stepper-XVIII).
 /// i extended  the functionality to be more useful in real world applications
 class StepperSwipe extends StatefulWidget {
-  const StepperSwipe({
+   StepperSwipe({
     Key key,
     @required this.initialValue,
     this.withNaturalNumbers = false,
@@ -22,7 +22,8 @@ class StepperSwipe extends StatefulWidget {
     this.firstIncrementDuration =  const Duration(milliseconds: 250),
     this.secondIncrementDuration =  const Duration(milliseconds: 100),
     this.speedTransitionLimitCount =  3,
-    this.maxValue=50
+    this.maxValue=50,
+    @required this.stepperValue,
 
 
   }) : super(key: key);
@@ -32,6 +33,7 @@ class StepperSwipe extends StatefulWidget {
   final int initialValue;
   final bool withNaturalNumbers;
   final bool withBackground;
+   int stepperValue;
 
   final Duration firstIncrementDuration;
   final Duration secondIncrementDuration;
@@ -64,6 +66,7 @@ class _Stepper2State extends State<StepperSwipe>
   void initState() {
     super.initState();
     _value = widget.initialValue ?? 0;
+    widget.stepperValue =_value;
     _controller =
         AnimationController(vsync: this, lowerBound: -0.5, upperBound: 0.5);
     _controller.value = 0.0;
@@ -76,6 +79,8 @@ class _Stepper2State extends State<StepperSwipe>
       _animation = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset(0.0, 1.5))
           .animate(_controller);
     }
+
+    print("widget.stepperValue ${widget.stepperValue}");
   }
 
   @override
@@ -136,8 +141,8 @@ class _Stepper2State extends State<StepperSwipe>
                         elevation: 5.0,
                         child: Center(
                           child: Text(
-                            '$_value',
-                            key: ValueKey<int>(_value),
+                            '${widget.stepperValue}',
+                            key: ValueKey<int>(widget.stepperValue),
                             style: TextStyle(
                                 color: widget.counterTextColor, fontSize: 36.0),
                           ),
@@ -211,15 +216,15 @@ class _Stepper2State extends State<StepperSwipe>
               if(widget.withNaturalNumbers ){
                
                 if (_controller.value <= -0.1923) {
-                  setState(() => isHor ? _value >=2 ?  _value-- :_value = 0 : _value<widget.maxValue?_value++:_value);
+                  setState(() => isHor ? widget.stepperValue >=2 ?  widget.stepperValue-- :widget.stepperValue = 0 : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
                 } else if (_controller.value >= 0.1923) {
-                  setState(() => isHor ? _value<widget.maxValue?_value++:_value  : _value >=2 ?_value-- :_value = 0);
+                  setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue  : widget.stepperValue >=2 ?widget.stepperValue-- :widget.stepperValue = 0);
                 }
               }else{
                 if (_controller.value <= -0.1923) {
-                  setState(() => isHor ? _value-- :_value<widget.maxValue?_value++:_value);
+                  setState(() => isHor ? widget.stepperValue-- :widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
                 } else if (_controller.value >= 0.1923) {
-                  setState(() => isHor ?_value<widget.maxValue?_value++:_value : _value--);
+                  setState(() => isHor ?widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
                 }
               }
             });
@@ -231,17 +236,17 @@ class _Stepper2State extends State<StepperSwipe>
               if(widget.withNaturalNumbers){
                 if(velocitLimit > widget.speedTransitionLimitCount ){
                   if (_controller.value <= -0.1923) {
-                    setState(() => isHor ? _value >=2 ?  _value-- : _value = 0 :_value<widget.maxValue?_value++:_value);
+                    setState(() => isHor ? widget.stepperValue >=2 ?  widget.stepperValue-- : widget.stepperValue = 0 :widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
                   } else if (_controller.value >= 0.1923) {
-                    setState(() => isHor ? _value<widget.maxValue?_value++:_value : _value >=2 ?_value-- : _value = 0);
+                    setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue >=2 ?widget.stepperValue-- : widget.stepperValue = 0);
                   }
                 }
               }else{
                 if(velocitLimit > widget.speedTransitionLimitCount){
                   if (_controller.value <= -0.1923) {
-                    setState(() => isHor ? _value-- : _value<widget.maxValue?_value++:_value);
+                    setState(() => isHor ? widget.stepperValue-- : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
                   } else if (_controller.value >= 0.1923) {
-                    setState(() => isHor ? _value<widget.maxValue?_value++:_value : _value--);
+                    setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
                   }
                 }
               }
@@ -255,7 +260,7 @@ class _Stepper2State extends State<StepperSwipe>
       bool isHor = widget.direction == Axis.horizontal;
       bool changed = false;
       Future.
-      setState(() => isHor ? _value-- : _value++);
+      setState(() => isHor ? widget.stepperValue-- : widget.stepperValue++);
       changed = true;
       }
     }*/
@@ -270,21 +275,21 @@ class _Stepper2State extends State<StepperSwipe>
     if(widget.withNaturalNumbers){
       if (_controller.value <= -0.1923) {
         _controller.value = -0.1923;
-        setState(() => isHor ? _value >=1 ? _value-- : 0 : _value<widget.maxValue?_value++:_value);
+        setState(() => isHor ? widget.stepperValue >=1 ? widget.stepperValue-- : 0 : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
         isChanged = true;
       } else if (_controller.value >= 0.1923) {
         _controller.value = 0.1923;
-        setState(() => isHor ? _value<widget.maxValue?_value++:_value : _value >=1 ? _value-- : 0);
+        setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue >=1 ? widget.stepperValue-- : 0);
         isChanged = true;
       }
     }else{
       if (_controller.value <= -0.1923) {
         _controller.value = -0.1923;
-        setState(() => isHor ? _value-- : _value<widget.maxValue?_value++:_value);
+        setState(() => isHor ? widget.stepperValue-- : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
         isChanged = true;
       } else if (_controller.value >= 0.1923) {
         _controller.value = 0.1923;
-        setState(() => isHor ? _value<widget.maxValue?_value++:_value : _value--);
+        setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
         isChanged = true;
       }
     }
@@ -308,7 +313,7 @@ class _Stepper2State extends State<StepperSwipe>
     }
 
     if (isChanged && widget.onChanged != null) {
-      widget.onChanged(_value);
+      widget.onChanged(widget.stepperValue);
     }
   }
 }
