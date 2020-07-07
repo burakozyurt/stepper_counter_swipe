@@ -23,6 +23,7 @@ class StepperSwipe extends StatefulWidget {
     this.secondIncrementDuration =  const Duration(milliseconds: 100),
     this.speedTransitionLimitCount =  3,
     this.maxValue=50,
+    this.withFastCount=false,
     @required this.stepperValue,
 
 
@@ -43,6 +44,7 @@ class StepperSwipe extends StatefulWidget {
 
   final bool withSpring;
   final bool withPlusMinus;
+  final bool withFastCount;
   final int maxValue;
 
   final Color counterTextColor;
@@ -185,12 +187,12 @@ class _Stepper2State extends State<StepperSwipe>
       _controller.value = -0.1923;
       _startAnimationPosX = -0.1923;
       _startAnimationPosY = -0.1923;
-      fastCount();
+      if(widget.withFastCount) fastCount();
     }else if(value>= 0.1923){
       _controller.value = 0.1923;
       _startAnimationPosX = 0.1923;
       _startAnimationPosY = 0.1923;
-      fastCount();
+     if(widget.withFastCount)   fastCount();
     }else{
       isReadyToFastAnim = false;
       _controller.value = offsetFromGlobalPos(details.globalPosition);
