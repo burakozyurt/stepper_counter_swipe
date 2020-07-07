@@ -22,6 +22,7 @@ class _MyAppState extends State<MyApp> {
             direction: Axis.horizontal,
             dragButtonColor: Colors.blueAccent,
             withSpring: true,
+            maxValue:5,
             withNaturalNumbers: true,
             onChanged: (int val) => print('New value : $val'),
           ),
