@@ -26,7 +26,11 @@ class _MyAppState extends State<MyApp> {
             direction: Axis.horizontal,
             dragButtonColor: Colors.blueAccent,
             withSpring: true,
+            withFastCount:false,
+           // withPlusMinus: true,
+            withPressed: true, //add icon pressed 
             maxValue:50,
+            //iconSize: 30, add icon size
             stepperValue:widget.val,
             withNaturalNumbers: true,
             onChanged: (int val) => print('New value : $val'),
