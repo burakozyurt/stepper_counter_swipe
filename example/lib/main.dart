@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
             withSpring: true,
             withFastCount:false,
            // withPlusMinus: true,
-            withPressed: true, //add icon pressed 
+           // withPressed: true, //add icon pressed 
             maxValue:50,
             //iconSize: 30, add icon size
             stepperValue:widget.val,

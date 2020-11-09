@@ -130,6 +130,7 @@ class _Stepper2State extends State<StepperSwipe>
                     bottom: widget.direction == Axis.horizontal ? null : 10.0,
                     child: widget.direction == Axis.horizontal
                         ? IconButton(
+                            disabledColor: Colors.white,
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onPressed: widget.withPressed
@@ -148,6 +149,7 @@ class _Stepper2State extends State<StepperSwipe>
                             iconSize: widget.iconSize ?? 40.0,
                             color: widget.iconsColor)
                         : IconButton(
+                            disabledColor: Colors.white,
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onPressed: widget.withPressed
@@ -197,6 +199,7 @@ class _Stepper2State extends State<StepperSwipe>
                         : IconButton(
                             splashColor: Colors.transparent,
                             highlightColor: Colors.transparent,
+                            disabledColor: Colors.white,
                             onPressed: widget.withPressed
                                 ? () {
                                     setState(() {
