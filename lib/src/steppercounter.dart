@@ -131,8 +131,8 @@ class _Stepper2State extends State<StepperSwipe>
                     child: widget.direction == Axis.horizontal
                         ? IconButton(
                             disabledColor: Colors.white,
-                            // splashColor: Colors.transparent,
-                            // highlightColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onPressed: widget.withPressed
                                 ? () {
                                     setState(() {
@@ -150,8 +150,8 @@ class _Stepper2State extends State<StepperSwipe>
                             color: widget.iconsColor)
                         : IconButton(
                             disabledColor: Colors.white,
-                            // splashColor: Colors.transparent,
-                            // highlightColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             onPressed: widget.withPressed
                                 ? () {
                                     setState(() {
@@ -175,8 +175,8 @@ class _Stepper2State extends State<StepperSwipe>
                     top: widget.direction == Axis.horizontal ? null : 10.0,
                     child: widget.direction == Axis.horizontal
                         ? IconButton(
-                            // splashColor: Colors.transparent,
-                            // highlightColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             disabledColor: Colors.white,
                             onPressed: widget.withPressed
                                 ? () {
@@ -197,8 +197,8 @@ class _Stepper2State extends State<StepperSwipe>
                             iconSize: widget.iconSize ?? 40.0,
                             color: widget.iconsColor)
                         : IconButton(
-                            // splashColor: Colors.transparent,
-                            // highlightColor: Colors.transparent,
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
                             disabledColor: Colors.white,
                             onPressed: widget.withPressed
                                 ? () {
