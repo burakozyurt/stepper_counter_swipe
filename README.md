@@ -28,7 +28,8 @@ Container(
     secondIncrementDuration: Duration(milliseconds: 100), //Unit time during fast counting
     direction: Axis.horizontal,
     dragButtonColor: Colors.blueAccent,
-    withNaturalNumbers: false,
+	maxValue: 50,
+	minValue: -10,
   ),
 ),
 ...
