@@ -10,6 +10,7 @@ class StepperSwipe extends StatefulWidget {
    StepperSwipe({
     Key key,
     @required this.initialValue,
+    @Deprecated('use minValue:0 instead')
     this.withNaturalNumbers = false,
     this.withBackground = true,
     @required this.onChanged,
@@ -23,6 +24,7 @@ class StepperSwipe extends StatefulWidget {
     this.secondIncrementDuration =  const Duration(milliseconds: 100),
     this.speedTransitionLimitCount =  3,
     this.maxValue=50,
+    this.minValue=-50,
     this.withFastCount=false,
     @required this.stepperValue,
 
@@ -46,6 +48,7 @@ class StepperSwipe extends StatefulWidget {
   final bool withPlusMinus;
   final bool withFastCount;
   final int maxValue;
+  int minValue;
 
   final Color counterTextColor;
   final Color dragButtonColor;
@@ -67,6 +70,7 @@ class _Stepper2State extends State<StepperSwipe>
   @override
   void initState() {
     super.initState();
+    widget.minValue = widget.withNaturalNumbers ? 0 : widget.minValue;
     _value = widget.initialValue ?? 0;
     widget.stepperValue =_value;
     _controller =
@@ -81,8 +85,7 @@ class _Stepper2State extends State<StepperSwipe>
       _animation = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset(0.0, 1.5))
           .animate(_controller);
     }
-
-    print("widget.stepperValue ${widget.stepperValue}");
+    //print("widget.stepperValue ${widget.stepperValue}");
   }
 
   @override
@@ -215,19 +218,10 @@ class _Stepper2State extends State<StepperSwipe>
                 timer.cancel();
               }
               velocitLimit++;
-              if(widget.withNaturalNumbers ){
-               
-                if (_controller.value <= -0.1923) {
-                  setState(() => isHor ? widget.stepperValue >=2 ?  widget.stepperValue-- :widget.stepperValue = 0 : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-                } else if (_controller.value >= 0.1923) {
-                  setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue  : widget.stepperValue >=2 ?widget.stepperValue-- :widget.stepperValue = 0);
-                }
-              }else{
-                if (_controller.value <= -0.1923) {
-                  setState(() => isHor ? widget.stepperValue-- :widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-                } else if (_controller.value >= 0.1923) {
-                  setState(() => isHor ?widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
-                }
+              if (_controller.value <= -0.1923) {
+                setState(() => isHor ? widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
+              } else if (_controller.value >= 0.1923) {
+                setState(() => isHor ?widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue);
               }
             });
             Timer.periodic(widget.secondIncrementDuration, (timer) {
@@ -235,21 +229,11 @@ class _Stepper2State extends State<StepperSwipe>
                 timer.cancel();
                 isReadyToFastAnim = true;
               }
-              if(widget.withNaturalNumbers){
-                if(velocitLimit > widget.speedTransitionLimitCount ){
-                  if (_controller.value <= -0.1923) {
-                    setState(() => isHor ? widget.stepperValue >=2 ?  widget.stepperValue-- : widget.stepperValue = 0 :widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-                  } else if (_controller.value >= 0.1923) {
-                    setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue >=2 ?widget.stepperValue-- : widget.stepperValue = 0);
-                  }
-                }
-              }else{
-                if(velocitLimit > widget.speedTransitionLimitCount){
-                  if (_controller.value <= -0.1923) {
-                    setState(() => isHor ? widget.stepperValue-- : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-                  } else if (_controller.value >= 0.1923) {
-                    setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
-                  }
+              if(velocitLimit > widget.speedTransitionLimitCount){
+                if (_controller.value <= -0.1923) {
+                  setState(() => isHor ? widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
+                } else if (_controller.value >= 0.1923) {
+                  setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue);
                 }
               }
             });
@@ -274,26 +258,14 @@ class _Stepper2State extends State<StepperSwipe>
     isTimerEnable = true;
     bool isHor = widget.direction == Axis.horizontal;
     bool isChanged = false;
-    if(widget.withNaturalNumbers){
-      if (_controller.value <= -0.1923) {
-        _controller.value = -0.1923;
-        setState(() => isHor ? widget.stepperValue >=1 ? widget.stepperValue-- : 0 : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-        isChanged = true;
-      } else if (_controller.value >= 0.1923) {
-        _controller.value = 0.1923;
-        setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue >=1 ? widget.stepperValue-- : 0);
-        isChanged = true;
-      }
-    }else{
-      if (_controller.value <= -0.1923) {
-        _controller.value = -0.1923;
-        setState(() => isHor ? widget.stepperValue-- : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
-        isChanged = true;
-      } else if (_controller.value >= 0.1923) {
-        _controller.value = 0.1923;
-        setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue--);
-        isChanged = true;
-      }
+    if (_controller.value <= -0.1923) {
+      _controller.value = -0.1923;
+      setState(() => isHor ? widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue : widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue);
+      isChanged = true;
+    } else if (_controller.value >= 0.1923) {
+      _controller.value = 0.1923;
+      setState(() => isHor ? widget.stepperValue<widget.maxValue?widget.stepperValue++:widget.stepperValue : widget.stepperValue>widget.minValue?widget.stepperValue--:widget.stepperValue);
+      isChanged = true;
     }
     if (widget.withSpring) {
       final SpringDescription _kDefaultSpring =
