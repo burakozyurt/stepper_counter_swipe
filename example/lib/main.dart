@@ -20,14 +20,15 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: StepperSwipe(
             initialValue:0,
-            speedTransitionLimitCount: 1,
-            firstIncrementDuration: Duration(milliseconds: 100),
+            speedTransitionLimitCount: 3,
+            firstIncrementDuration: Duration(milliseconds: 300),
             secondIncrementDuration: Duration(milliseconds: 100),
             direction: Axis.horizontal,
             dragButtonColor: Colors.blueAccent,
             withSpring: true,
             maxValue:50,
-			minValue:-10,
+			      minValue:1,
+            withFastCount: true,
             stepperValue:widget.val,
             onChanged: (int val) => print('New value : $val'),
           ),
