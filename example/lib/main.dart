@@ -28,6 +28,7 @@ class _MyAppState extends State<MyApp> {
             withSpring: true,
             withFastCount:false,
             withPlusMinus: true,
+            isRtl: true,
 
             withPressed: true, //add icon pressed 
             maxValue:50,

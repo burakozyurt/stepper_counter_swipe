@@ -26,11 +26,12 @@ class StepperSwipe extends StatefulWidget {
     this.maxValue = 50,
     this.withFastCount = false,
     this.iconSize,
+    this.isRtl = false,
     @required this.stepperValue,
   }) : super(key: key);
 
   final Axis direction;
-
+final bool isRtl;
   final int initialValue;
   final bool withNaturalNumbers;
   final bool withBackground;
@@ -77,6 +78,7 @@ class _Stepper2State extends State<StepperSwipe>
     _controller.addListener(() {});
 
     if (widget.direction == Axis.horizontal) {
+     
       _animation = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset(1.5, 0.0))
           .animate(_controller);
     } else {
@@ -126,7 +128,9 @@ class _Stepper2State extends State<StepperSwipe>
                 alignment: Alignment.center,
                 children: <Widget>[
                   Positioned(
-                    left: widget.direction == Axis.horizontal ? 10.0 : null,
+                    right:widget.isRtl? widget.direction == Axis.horizontal ? 10.0 : null: null, 
+
+                    left: widget.isRtl? null: widget.direction == Axis.horizontal ? 10.0 : null,
                     bottom: widget.direction == Axis.horizontal ? null : 10.0,
                     child: widget.direction == Axis.horizontal
                         ? IconButton(
@@ -171,7 +175,8 @@ class _Stepper2State extends State<StepperSwipe>
                             color: widget.iconsColor),
                   ),
                   Positioned(
-                    right: widget.direction == Axis.horizontal ? 10.0 : null,
+                    right:widget.isRtl? null: widget.direction == Axis.horizontal ? 10.0 : null,
+                      left: widget.isRtl? widget.direction == Axis.horizontal ? 10.0 : null : null ,
                     top: widget.direction == Axis.horizontal ? null : 10.0,
                     child: widget.direction == Axis.horizontal
                         ? IconButton(
@@ -225,6 +230,7 @@ class _Stepper2State extends State<StepperSwipe>
                     onHorizontalDragEnd: _onPanEnd,
                     child: SlideTransition(
                       position: _animation,
+                     // textDirection: widget.isRtl ? TextDirection.rtl:  TextDirection.ltr,
                       child: Material(
                         color: widget.dragButtonColor,
                         shape: const CircleBorder(),
@@ -403,9 +409,11 @@ class _Stepper2State extends State<StepperSwipe>
       if (_controller.value <= -0.1923) {
         _controller.value = -0.1923;
         setState(() => isHor
-            ? widget.stepperValue >= 1
+            ? !widget.isRtl? widget.stepperValue >= 1
                 ? widget.stepperValue--
-                : 0
+                : 0 : widget.stepperValue < widget.maxValue
+                ? widget.stepperValue++
+                : widget.stepperValue
             : widget.stepperValue < widget.maxValue
                 ? widget.stepperValue++
                 : widget.stepperValue);
@@ -413,9 +421,11 @@ class _Stepper2State extends State<StepperSwipe>
       } else if (_controller.value >= 0.1923) {
         _controller.value = 0.1923;
         setState(() => isHor
-            ? widget.stepperValue < widget.maxValue
+            ? !widget.isRtl? widget.stepperValue < widget.maxValue
                 ? widget.stepperValue++
-                : widget.stepperValue
+                : widget.stepperValue :widget.isRtl? widget.stepperValue >= 1
+                ? widget.stepperValue--
+                : 0 : widget.stepperValue < widget.maxValue
             : widget.stepperValue >= 1
                 ? widget.stepperValue--
                 : 0);
