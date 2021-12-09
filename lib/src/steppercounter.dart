@@ -8,12 +8,12 @@ import 'package:flutter/physics.dart';
 /// i extended  the functionality to be more useful in real world applications
 class StepperSwipe extends StatefulWidget {
    StepperSwipe({
-    Key key,
-    @required this.initialValue,
+    Key? key,
+    required this.initialValue,
     @Deprecated('use minValue:0 instead')
     this.withNaturalNumbers = false,
     this.withBackground = true,
-    @required this.onChanged,
+    required this.onChanged,
     this.direction = Axis.horizontal,
     this.withSpring = true,
     this.counterTextColor = Colors.white,
@@ -26,7 +26,7 @@ class StepperSwipe extends StatefulWidget {
     this.maxValue=50,
     this.minValue=-50,
     this.withFastCount=false,
-    @required this.stepperValue,
+    required this.stepperValue,
 
 
   }) : super(key: key);
@@ -60,18 +60,19 @@ class StepperSwipe extends StatefulWidget {
 
 class _Stepper2State extends State<StepperSwipe>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation _animation;
-  int _value;
-  double _startAnimationPosX;
-  double _startAnimationPosY;
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+  late int _value;
+  double _startAnimationPosX = 0.0;
+  double _startAnimationPosY = 0.0;
   bool isTimerEnable = true;
   bool isReadyToFastAnim = true;
+
   @override
   void initState() {
     super.initState();
     widget.minValue = widget.withNaturalNumbers ? 0 : widget.minValue;
-    _value = widget.initialValue ?? 0;
+    _value = widget.initialValue;
     widget.stepperValue =_value;
     _controller =
         AnimationController(vsync: this, lowerBound: -0.5, upperBound: 0.5);
@@ -90,7 +91,7 @@ class _Stepper2State extends State<StepperSwipe>
 
   @override
   void dispose() {
-    _controller?.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
