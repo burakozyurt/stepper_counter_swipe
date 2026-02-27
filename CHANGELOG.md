@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1] - 2026-02-28
+
+#### Changed
+- Added `.pubignore` to exclude large demo GIF files from the published package (30 MB → 53 KB)
+
+---
+
 ## [2.0.0] - 2026-02-28
 
 #### Breaking — Migration Required
