@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(flutter pub get)",
+      "Bash(flutter analyze)",
+      "Bash(flutter build apk --debug)",
+      "Bash(java -version)"
+    ]
+  }
+}

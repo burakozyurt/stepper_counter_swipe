@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stepper_counter_swipe/stepper_counter_swipe.dart';
-void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
- int val=0;
-  @override
-  _MyAppState createState() => _MyAppState();
+void main() => runApp(const MyApp());
 
-  
-}
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-class _MyAppState extends State<MyApp> {
-   
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,18 +13,18 @@ class _MyAppState extends State<MyApp> {
         backgroundColor: Colors.green,
         body: Center(
           child: StepperSwipe(
-            initialValue:0,
+            initialValue: 0,
             speedTransitionLimitCount: 3,
-            firstIncrementDuration: Duration(milliseconds: 300),
-            secondIncrementDuration: Duration(milliseconds: 100),
+            firstIncrementDuration: const Duration(milliseconds: 300),
+            secondIncrementDuration: const Duration(milliseconds: 100),
             direction: Axis.horizontal,
             dragButtonColor: Colors.blueAccent,
             withSpring: true,
-            maxValue:50,
-			      minValue:1,
+            maxValue: 50,
+            minValue: 1,
             withFastCount: true,
-            stepperValue:widget.val,
             onChanged: (int val) => print('New value : $val'),
+            step: 5,
           ),
         ),
       ),
